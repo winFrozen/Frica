@@ -1,0 +1,247 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<br> <br> <br>
+    <!-- Hero Start -->
+<div>
+    <div class="container-fluid bg-primary py-5 bg-hero mb-5">
+        <div class="container py-2">
+            <div class="row justify-content-start">
+                <div class="col-lg-9 text-center text-lg-start">
+                    <h1 class="display-2 text-white mb-md-2">Home Page</h1>
+                    <a href="{% url 'computers' %}" class="btn btn-primary py-md-3 px-md-5 me-2">Computers</a>
+                    <a href="{% url 'about' %}" class="btn btn-secondary py-md-3 px-md-5">About Us</a>
+                    <a href="{% url 'mans-clothes' %}" class="btn btn-primary py-md-3 px-md-5 me-2">Mans Clothes</a>
+                    <a href="{% url 'womans-clothes' %}" class="btn btn-secondary py-md-3 px-md-5">Womans clothes</a>
+                </div>
+            </div>
+        </div>
+</div>
+
+      <!-- banner section start -->
+      <div class="banner_section layout_padding">
+         <div id="my_slider" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+               <div class="carousel-item active">
+                  <div class="container">
+                     <div class="row border_1">
+                        {% for Banner in ban %}
+                        <div class="col-md-4">
+                           <div class="image_1"><img src="{{Banner.img.url}}" style="width:100%"></div>
+                        </div>
+                        <div class="col-md-4">
+                           <h1 class="banner_taital">{{Banner.name}}</h1>
+                           <div class="buynow_bt active"><a href="{% url 'buy' %}">Buy Now</a></div>
+                           <div class="contact_bt"><a href="{% url 'contact' %}">Contact Us</a></div>
+                        </div>
+                        <div class="col-md-4">
+                           <div class="image_2"><img src="{{Banner.img2.url}}" style="width:100%"></div>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <a class="carousel-control-prev" href="#my_slider" role="button" data-slide="prev">
+              <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control-next" href="#my_slider" role="button" data-slide="next">
+              <i class="fa fa-angle-right"></i>
+            </a>
+         </div>
+      </div>
+      <!-- banner section end -->
+      <!-- catagary section start -->
+      <div class="catagary_section layout_padding">
+         <div class="container">
+            <div class="catagary_main">
+               <div class="catagary_left">
+                  <h2 class="categary_text">Categary</h2>
+               </div>
+               <div class="catagary_right">
+                  <div class="catagary_menu">
+                     <ul>
+                        <li><a href="{% url 'mans-clothes' %}">Man's Fashion</a></li>
+                        <li><a href="{% url 'womans-clothes' %}">Woman's Fashion</a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="#"></a></li>
+                        <li><a href="{% url 'computers' %}">Computers</a></li>
+                        <li><a href="{% url 'computers' %}">Watchs</a></li>
+                        <li><a href="{% url 'about' %}">About Us</a></li>
+                        <li><a href="#"></a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="catagary_section_2">
+         <div class="container-fluid">
+            <div class="row">
+                {% for Devices in device %}
+               <div class="col-md-4">
+                  <div class="box_man">
+                      <h3> <a href="{% url 'device_detail_view' Devices.pk %}" class="mobile_text">{{ Devices.name }} </a></h3>
+                     <div class="mobile_img"><img style="width:400px; high:400px;" src="{{Devices.img.url}}"></div>
+                     <div class="cart_main">
+                        <div class="cart_bt"><a href="{% url 'buy' %}">Add To Cart</a></div>
+                        <h4 class="samsung_text">{{ Devices.brand }}</h4>
+                        <h6 class="rate_text"><a href="#">{{ Devices.price }} $</a></h6>
+                        <h6 class="rate_text_1">{{ Devices.oldprice }} $</h6>
+                     </div>
+                  </div>
+               </div>
+                {% endfor %}
+            </div>
+         </div>
+      </div>
+      <!-- catagary section end -->
+      <!-- computers section start -->
+      <div class="computers_section layout_padding">
+         <div class="container">
+            <h1 class="computers_taital">Computers & Laptop</h1>
+         </div>
+      </div>
+      <div class="computers_section_2">
+         <div class="container-fluid">
+            <div class="computer_main">
+               <div class="row">
+                   {% for Laptops in laptop %}
+                  <div class="col-md-4">
+                     <div class="computer_img"><img src="{{Laptops.img.url}}"></div>
+                      <h4> <a href="{% url 'laptop_detail_view' Laptops.pk %}" class="computer_text">{{Laptops.name}} </a></h4>
+                     <div class="computer_text_main">
+                        <h4 class="dell_text">{{Laptops.brand}}</h4>
+                        <h6 class="price_text"><a href="#">{{Laptops.price}} $</a></h6>
+                        <h6 class="price_text_1"><a href="#">{{Laptops.oldprice}} $</a></h6>
+                     </div>
+                     <div class="cart_bt_1"><a href="{% url 'buy' %}">Add To Cart</a></div>
+                  </div>
+                   {% endfor %}
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- computers section end -->
+      <!-- mans clothes section start -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+      <div class="mans_section layout_padding">
+         <div class="container">
+            <h1 class="computers_taital">Man’s clothes</h1>
+         </div>
+      </div>
+      <div class="mans_section_2">
+         <div class="container-fluid">
+            <div class="mans_main">
+               <div class="row">
+                   {% for Mbanner in mbanner %}
+                  <div class="col-md-6">
+                     <h1 class="offer_text">{{Mbanner.name}}</h1>
+                     <p class="lorem_text">{{Mbanner.bio}}</p>
+                     <div class="read_bt"><a href="{% url 'buy' %}">Buy Now</a></div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="image_3"><img src="{{Mbanner.img.url}}"></div>
+                  </div>
+                   {% endfor %}
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- mans clothes section end -->
+
+                 <!-- Courses Start -->
+          <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h6 class="section-title bg-white text-center text-primary px-3">Clothes</h6>
+                <h1 class="mb-4">Popular Outfits</h1>
+            </div>
+            <div class="row g-4 justify-content-center">
+                {% for Manclothes in manclothe %}
+                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="course-item bg-light">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid" style="width:400px; high:350px" src="{{Manclothes.img.url}}" alt=""><br>
+                            <br><div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
+                               <br>
+                                <a href="{% url 'buy' %}" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Buy Now</a>
+                                <a href="" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">See More</a>
+                            </div>
+                        </div>
+                        <div class="text-center p-4 pb-0">
+                             <br>
+                            <h3 class="mb-0">{{ Manclothes.price }} $</h3>
+                            <div class="mb-3">
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small class="fa fa-star text-primary"></small>
+                                <small></small>
+                            </div>
+                            <h4 class="computer_text">{{ Manclothes.name }}</h4>
+                        </div>
+                        <div class="d-flex border-top">
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>{{ Manclothes.seller }}</small>
+                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>2K views</small>
+                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>1K Purchaser</small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    <!-- Courses End -->
+
+
+      <!-- womans clothes section start -->
+      <div class="computers_section layout_padding">
+         <div class="container">
+             <h6 class="text-center text-primary">Lady's dresses and Clothes</h6>
+             <div class="computer_main">
+                 {% for Wbanner in wbanner %}
+            <h1 class="womans_taital">{{ Wbanner.name }}</h1>
+            <div class="womans_section_2">
+               <div class="row">
+                  <div class="col-md-6">
+                     <h1 class="Get_offer_text">{{Wbanner.bio}}</h1>
+                     <div class="read_bt"><a href="{% url 'buy' %}">Buy Now</a></div>
+                  </div>
+                  <div class="col-md-6">
+                     <div class="image_4"><img src="{{Wbanner.img.url}}"></div>
+                  </div>
+               </div>
+                {% endfor %}
+            </div>
+         </div>
+</div><br><br><br><br><br><br>
+      <!-- womans clothes section end -->
+
+                   <!-- Products Start -->
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+            <div class="mx-auto text-center ">
+                <br><br><br><br><br><br><h6 class="text-primary">Products</h6>
+                <h1 class="womans_taital">Our Quality and Branding Clothes</h1><br><br><br><br><br><br>
+                         <div class="row g-4 justify-content-center">
+                {% for Wclothes in wclothe %}
+                <div class="col-lg-5 col-md-6 wow fadeInUp" data-wow-delay="0.8s">
+                        <img style="width: 450px; height: 750px;" src="{{Wclothes.img.url}}" alt="">
+                            <br><a class=" bg-primary py-3 px-5" href=""><i class="bi bi-cart text-white"></i>See more</a>
+                            <a class=" bg-secondary py-3 px-5" href="{% url 'buy' %}" ><i class="bi bi-eye text-white"></i>Buy   {{Wclothes.price}} $</a>
+                            <br><br><h4>Har bir mahsutga uzoq muddatli kafolat beriladi</h4>
+                            <div>
+                            <h6 class="womans_taital">{{Wclothes.name}}</h6>
+                            <div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+    <!-- Products End -->
+
+
+{% endblock content %}

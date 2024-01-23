@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+      <!-- computers section start -->
+      <div class="computers_section layout_padding">
+         <div class="container">
+            <h1 class="computers_taital">Computers & Laptop</h1>
+         </div>
+      </div>
+      <div class="computers_section_2">
+         <div class="container-fluid">
+            <div class="computer_main">
+               <div class="row">
+                  <div class="col-md-4">
+                     <div class="computer_img"><img src="{{laptop.img.url}}"></div>
+                     <h4 class="computer_text">{{laptop.name}}</h4>
+                     <div class="computer_text_main">
+                        <h4 class="dell_text">{{laptop.brand}}</h4>
+                        <h6 class="price_text"><a href="#">{{laptop.price}} $</a></h6>
+                        <h6 class="price_text_1"><a href="#">{{laptop.oldprice}} $</a></h6>
+                     </div>
+                     <div class="cart_bt_1"><a href="{% url 'buy' %}">Add To Cart</a></div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- computers section end -->
+
+{% endblock content %}
